@@ -18,10 +18,13 @@ while True:
     if option == 0:
         break
     elif option == 1:
-        users, connectionsIds = fnc.getUsersAndIds(data)
-        print("\nLista de usuarios y sus id unicas:\n")
-        for i in range(len(users)):
-            print("{:<25}".format(users[i]), connectionsIds[i])
+        # users, connectionsIds = fnc.getUsersAndIds(data)
+        usersDir = fnc.getUsersAndIds(data)
+        print("\nLista de usuarios y sus id de conexion:")
+        # for i in range(len(users)):
+        #     print("{:<25}".format(users[i]), connectionsIds[i])
+        for user, ids in usersDir.items():
+            print(f"\nUsuario: {user}\nIDs: {', '.join(ids)}")
     elif option == 2:
         date = input("Ingrese la fecha en formato DD/MM/YYYY: ")
         if fnc.validateDate(date):

@@ -2,18 +2,27 @@ from datetime import datetime
 
 def getUsersAndIds(data):
     usersDir = {}
-    users = []
-    id_conexiones = []
-    for row in data:
+    # users = []
+    # idConnections = []
+    # for row in data:
+    #     fields = row.strip().split(';')
+    #     if len(fields) > 1:
+    #         idConnection, user = fields[0], fields[1]
+    #         if user not in usersDir and user:
+    #             usersDir[user] = idConnection
+    # for user, idConnection in usersDir.items():
+    #     users.append(user)
+    #     idConnections.append(idConnection)
+    # return users, idConnections
+    for row in data[1:]:
         fields = row.strip().split(';')
         if len(fields) > 1:
-            id_conexion, user = fields[0], fields[1]
-            if user not in usersDir and user:
-                usersDir[user] = id_conexion
-    for user, id_conexion in usersDir.items():
-        users.append(user)
-        id_conexiones.append(id_conexion)
-    return users, id_conexiones
+            idConnection, user = fields[0], fields[1]
+            if user:
+                if user not in usersDir:
+                    usersDir[user] = []
+                usersDir[user].append(idConnection)
+    return usersDir
 
 def getLoggedUsersList(data, date):
     loggedUsers = set()
