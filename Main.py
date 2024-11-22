@@ -50,7 +50,7 @@ while True:
         requestedUser = input("Ingrese el nombre del usuario: ")
         macs = fnc.getUserMac(data, requestedUser)
         if macs:
-            print(f"\nLas MACs del usuario {requestedUser} son: \n")
+            print(f"\nMACs del usuario {requestedUser} son: \n")
             for mac in macs:
                 print(mac)
         else:
@@ -59,8 +59,10 @@ while True:
         apMac = input("Ingrese el AP: ")
         macs = fnc.getApMac(data, apMac)
         if macs:
-            print("MAC asociadas al AP:")
+            print(f"\nMACs asociadas al AP {apMac}:\n")
             for mac in macs: 
                 print(mac)
+        else:
+            print("\nEl AP ingresado no existe o no tiene MACs asociadas.")
     else:
         print("Opción inválida. Por favor intente de nuevo.\n")

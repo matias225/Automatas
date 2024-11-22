@@ -47,22 +47,21 @@ def getSessionTimeByUser(data, requestedUser):
         return "WrongUser"
     if totalTime:
         totalHours = totalTime // 3600
-        totalMinutes = (totalTime // 60) - (totalHours * 60 )
-        totalSeconds = totalTime - ((totalMinutes*60) + (totalHours * 3600))
-        result = "\n"+ str(totalHours)+ " horas " + str(totalMinutes) + " minutos " + str(totalSeconds) + " segundos\n"
+        totalMinutes = (totalTime % 3600) // 60
+        totalSeconds = totalTime % 60
+        result = f"\n{totalHours} horas {totalMinutes} minutos {totalSeconds} segundos\n"
         return result
         
 def getUserMac(data, requestedUser):
-    mac = set()
+    macs = set()
     for row in data:
         fields = row.strip().split(';')
         user = fields[1]
         if user == requestedUser:
-            mac.add(fields[8])
-    if mac:
-        return mac
-    if requestedUser not in user:
-        return False
+            macs.add(fields[8])
+    if macs:
+        return macs
+    return False
 
 def getApMac(data, apMac):
     macs = set()
@@ -72,7 +71,9 @@ def getApMac(data, apMac):
             ap, mac = fields[7], fields[8]
             if ap == apMac:
                 macs.add(mac)
-    return macs
+    if macs:
+        return macs
+    return False
 
 def menu():
     print('\nSeleccione una opción:')
