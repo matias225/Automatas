@@ -56,9 +56,9 @@ def getUserMac(data, requestedUser):
     macs = set()
     for row in data:
         fields = row.strip().split(';')
-        user = fields[1]
+        user, mac = fields[1], fields[8]
         if user == requestedUser:
-            macs.add(fields[8])
+            macs.add(mac)
     if macs:
         return macs
     return False
@@ -67,10 +67,9 @@ def getApMac(data, apMac):
     macs = set()
     for row in data:
         fields = row.strip().split(';')
-        if len(fields) > 8:
-            ap, mac = fields[7], fields[8]
-            if ap == apMac:
-                macs.add(mac)
+        ap, mac = fields[7], fields[8]
+        if ap == apMac:
+            macs.add(mac)
     if macs:
         return macs
     return False

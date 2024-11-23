@@ -13,7 +13,7 @@ while True:
     try:
         option = int(input("Opción: "))
     except ValueError:
-        print("Por favor, ingrese un numero valido.\n")
+        print("\nPor favor, ingrese un numero valido.")
         continue
     if option == 0:
         break
@@ -28,12 +28,12 @@ while True:
     elif option == 2:
         date = input("Ingrese la fecha en formato DD/MM/YYYY: ")
         if fnc.validateDate(date):
-            users = fnc.getLoggedUsersList(data, date)
-            if users:
+            loggedUsers = fnc.getLoggedUsersList(data, date)
+            if loggedUsers:
                 print(f"\nLista de usuarios con inicio de sesion en la fecha {date}:\n")
-                for user in users:
+                for user in loggedUsers:
                     print(user)
-            else:   
+            else:
                 print("\nNo se encontro inicios de sesion en la fecha indicada.")
         else:
             print("\nFormato de fecha incorrecto.")        
@@ -65,4 +65,4 @@ while True:
         else:
             print("\nEl AP ingresado no existe o no tiene MACs asociadas.")
     else:
-        print("Opción inválida. Por favor intente de nuevo.\n")
+        print("\nOpción inválida. Por favor intente de nuevo.")
