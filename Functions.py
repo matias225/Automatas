@@ -49,7 +49,7 @@ def getSessionTimeByUser(data, requestedUser):
         totalHours = totalTime // 3600
         totalMinutes = (totalTime % 3600) // 60
         totalSeconds = totalTime % 60
-        result = f"\n{totalHours} horas {totalMinutes} minutos {totalSeconds} segundos\n"
+        result = f"\n{totalHours} horas {totalMinutes} minutos {totalSeconds} segundos"
         return result
         
 def getUserMac(data, requestedUser):
